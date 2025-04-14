@@ -5,7 +5,7 @@ import com.example.springWeb01.form.ToDoForm;
 
 public class ToDoHelper {
 	/**
-	 * ToDo�֕ϊ�
+	 * ToDoへ変換
 	 */
 	public static ToDo convertToDo(ToDoForm form) {
 		ToDo todo = new ToDo();
@@ -16,14 +16,14 @@ public class ToDoHelper {
 	}
 	
 	/**
-	 * ToDoForm�ւ̕ϊ�
+	 * ToDoFormへの変換
 	 */
 	public static ToDoForm convertToDoFrom(ToDo todo) {
 		ToDoForm form = new ToDoForm();
 		form.setId(todo.getId());
 		form.setTodo(todo.getTodo());
 		form.setDetail(todo.getDetail());
-		// �X�V��ʐݒ�
+		// 更新画面設定
 		form.setIsNew(false);
 		return form;
 	}

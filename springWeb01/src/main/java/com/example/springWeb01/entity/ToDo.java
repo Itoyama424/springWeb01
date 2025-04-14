@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ToDo {
-    /** ‚·‚é‚±‚ÆID */
+    /** ã™ã‚‹ã“ã¨ID */
     private Integer id;
-    /** ‚·‚é‚±‚Æ */
+    /** ã™ã‚‹ã“ã¨ */
     private String todo;
-    /** ‚·‚é‚±‚ÆÚ× */
+    /** ã™ã‚‹ã“ã¨è©³ç´° */
     private String detail;
-    /** ì¬“ú */
+    /** ä½œæˆæ—¥æ™‚ */
     private LocalDateTime createdAt;
-    /** XV“ú */
+    /** æ›´æ–°æ—¥æ™‚ */
     private LocalDateTime updatedAt;
 }

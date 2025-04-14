@@ -10,27 +10,27 @@ import com.example.springWeb01.entity.ToDo;
 @Mapper
 public interface ToDoMapper {
 	/**
-	 * �S�Ă̂��邱�Ƃ��擾���܂��B
+	 * 全てのすることを取得します。
 	 */
 	List<ToDo> selectAll();
 	
 	/**
-	 * �w�肳�ꂽID�̑Ή�����A���邱�Ƃ��擾���܂��B
+	 * 指定されたIDの対応する、することを取得します。
 	 */
 	ToDo selectById(@Param("id") Integer id);
 	
 	/**
-	 * ���邱�Ƃ�o�^����
+	 * することを登録する
 	 */
 	void insert(ToDo todo);
 	
 	/**
-	 * ���邱�Ƃ��X�V���܂��B
+	 * することを更新します。
 	 */
 	void update(ToDo todo);
 	
 	/**
-	 * �w�肳�ꂽID�̂��邱�Ƃ��폜���܂��B
+	 * 指定されたIDのすることを削除します。
 	 */
 	void delete(@Param("id") Integer id);
 }

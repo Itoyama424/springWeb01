@@ -5,18 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * ‚·‚é‚±‚ÆForm
+ * ã™ã‚‹ã“ã¨Form
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ToDoForm {
-	/** ‚·‚é‚±‚Æid */
+	/** ã™ã‚‹ã“ã¨id */
 	private Integer id;
-	/** ‚·‚é‚±‚Æ */	
+	/** ã™ã‚‹ã“ã¨ */	
 	private String todo;
-	/** ‚·‚é‚±‚ÆÚ× */	
+	/** ã™ã‚‹ã“ã¨è©³ç´° */	
 	private String detail;
-	/** V‹K”»’è */	
+	/** æ–°è¦åˆ¤å®š */	
 	private Boolean isNew;
 }
