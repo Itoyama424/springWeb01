@@ -13,8 +13,8 @@ import lombok.RequiredArgsConstructor;
 public class SpringWeb01Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringWeb01Application.class, args)
-		.getBean(SpringWeb01Application.class).exec();;
+		SpringApplication.run(SpringWeb01Application.class, args);
+		//.getBean(SpringWeb01Application.class).exec();;
 	}
 	
 	private final ToDoMapper mapper;
