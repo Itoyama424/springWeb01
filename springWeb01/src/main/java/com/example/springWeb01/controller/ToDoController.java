@@ -21,7 +21,7 @@ public class ToDoController {
 	private final ToDoService toDoService;
 	
 	/**
-	 * ‚·‚é‚±‚Æ‚Ìˆê——‚ğ•\¦‚µ‚Ü‚·B
+	 * ã™ã‚‹ã“ã¨ã®ä¸€è¦§ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 	 */
 	@GetMapping
 	public String list(Model model) {
@@ -30,7 +30,7 @@ public class ToDoController {
 	}
 	
 	/**
-	 * ‚·‚é‚±‚ÆÚ×‰æ–Ê‚ğ•\¦‚µ‚Ü‚·B
+	 * ã™ã‚‹ã“ã¨è©³ç´°ç”»é¢ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 	 * @param id
 	 * @param model
 	 * @param attribute
@@ -38,22 +38,22 @@ public class ToDoController {
 	 */
 	@GetMapping("/{id}")
 	public String detail(@PathVariable Integer id, Model model, RedirectAttributes attribute) {
-		// ‚·‚é‚±‚ÆID‚©‚ç‚·‚é‚±‚Æ‚ğæ“¾
+		// ã™ã‚‹ã“ã¨IDã‹ã‚‰ã™ã‚‹ã“ã¨ã‚’å–å¾—
 		ToDo todo = toDoService.findByIdToDo(id);
 		
 		if(todo != null) {
 			model.addAttribute("todo", todo);
 			return "todo/detail";
 		} else {
-			// ‘ÎÛƒf[ƒ^‚È‚µ‚Ìê‡‚Íƒtƒ‰ƒbƒVƒ…ƒƒbƒZ[ƒW
-			attribute.addFlashAttribute("errorMessage", "‘ÎÛƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ");
-			// ƒŠƒ_ƒCƒŒƒNƒg(‘½•ªƒT[ƒo[‚©‚çƒT[ƒo[iController‚©‚çControllerj‚ªƒŠƒ_ƒCƒŒƒNƒg
+			// å¯¾è±¡ãƒ‡ãƒ¼ã‚¿ãªã—ã®å ´åˆã¯ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+			attribute.addFlashAttribute("errorMessage", "å¯¾è±¡ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Šã¾ã›ã‚“");
+			// ãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆ(å¤šåˆ†ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ã‚µãƒ¼ãƒãƒ¼ï¼ˆControllerã‹ã‚‰Controllerï¼‰ãŒãƒªãƒ€ã‚¤ãƒ¬ã‚¯ãƒˆ
 			return "redirect:/todos";
 		}
 	}
 	
 	/**
-	 * V‹K“o˜^‰æ–Ê‚ğ•\¦‚µ‚Ü‚·B
+	 * æ–°è¦ç™»éŒ²ç”»é¢ã‚’è¡¨ç¤ºã—ã¾ã™ã€‚
 	 */
 //	@GetMapping("/form")
 //	public String newToDo() {

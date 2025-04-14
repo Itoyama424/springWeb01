@@ -20,29 +20,29 @@ public class SpringWeb01Application {
 	private final ToDoMapper mapper;
 	
 	public void exec() {
-		System.out.println("‘SŒŒŸõ");
+		System.out.println("å…¨ä»¶æ¤œç´¢");
 		for(ToDo row : mapper.selectAll()) {
 			System.out.println(row);
 		}
 		
-		System.out.println("1ŒŒŸõ");
+		System.out.println("1ä»¶æ¤œç´¢");
 		System.out.println(mapper.selectById(1));
 		
-		System.out.println("“o˜^Šm”F");
+		System.out.println("ç™»éŒ²ç¢ºèª");
 		ToDo todo = new ToDo();
-		todo.setTodo("ƒŠƒ|ƒWƒgƒŠ‚ÌƒeƒXƒg");
-		todo.setDetail("DB‚Ö‚Ì“o˜^Šm”F");
+		todo.setTodo("ãƒªãƒã‚¸ãƒˆãƒªã®ãƒ†ã‚¹ãƒˆ");
+		todo.setDetail("DBã¸ã®ç™»éŒ²ç¢ºèª");
 		mapper.insert(todo);
 		System.out.println(mapper.selectById(4));
 		
-		System.out.println("XVŠm”F");
+		System.out.println("æ›´æ–°ç¢ºèª");
 		todo = mapper.selectById(4);
-		todo.setTodo("ƒŠƒ|ƒWƒgƒŠ‚ÌƒeƒXƒgXV");
-		todo.setDetail("DB‚Ö‚Ì“o˜^Šm”F@XV");
+		todo.setTodo("ãƒªãƒã‚¸ãƒˆãƒªã®ãƒ†ã‚¹ãƒˆæ›´æ–°");
+		todo.setDetail("DBã¸ã®ç™»éŒ²ç¢ºèªã€€æ›´æ–°");
 		mapper.update(todo);
 		System.out.println(mapper.selectById(4));
 		
-		System.out.println("íœ");
+		System.out.println("å‰Šé™¤");
 		mapper.delete(4);
 		for(ToDo row : mapper.selectAll()) {
 			System.out.println(row);
