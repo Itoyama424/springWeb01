@@ -110,6 +110,7 @@ public class ToDoController {
 		}
 	}
 	
+	@PostMapping("/update")
 	public String update(ToDoForm form, RedirectAttributes attribute) {
 		// エンティティへ変更
 		ToDo todo = ToDoHelper.convertToDo(form);
@@ -117,6 +118,16 @@ public class ToDoController {
 		toDoService.updateToDo(todo);
 		// 対象データがない場合はフラッシュメッセージを設定
 		attribute.addFlashAttribute("message", "ToDoが更新されました。");
+		// PRGパターン
+		return "redirect:/todos";
+	}
+	
+	@PostMapping("/delete/{id}")
+	public String delete(@PathVariable Integer id, RedirectAttributes attributes) {
+		// 削除処理
+		toDoService.deleteToDo(id);
+		// フラッシュメッセージ
+		attributes.addFlashAttribute("message", "ToDoが削除されました。");
 		// PRGパターン
 		return "redirect:/todos";
 	}
