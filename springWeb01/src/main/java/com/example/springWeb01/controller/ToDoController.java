@@ -3,11 +3,15 @@ package com.example.springWeb01.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.springWeb01.entity.ToDo;
+import com.example.springWeb01.form.ToDoForm;
+import com.example.springWeb01.helper.ToDoHelper;
 import com.example.springWeb01.service.ToDoService;
 
 import lombok.RequiredArgsConstructor;
@@ -55,10 +59,65 @@ public class ToDoController {
 	/**
 	 * 新規登録画面を表示します。
 	 */
-//	@GetMapping("/form")
-//	public String newToDo() {
-//		
-//	}
+	@GetMapping("/form")
+	public String newToDo(@ModelAttribute ToDoForm form) {
+		// 新規登録画面の設定
+		form.setIsNew(true);
+		return "todo/form";
+	}
+	/**
+	 * 新規登録を実行します。
+	 * @param form
+	 * @param attribute
+	 * @return
+	 */
+	@PostMapping("/save")
+	public String create(ToDoForm form, RedirectAttributes attribute) {
+		// エンティティへ変更
+		ToDo todo = ToDoHelper.convertToDo(form);
+		// 登録実行
+		toDoService.insertToDo(todo);
+		// フラッシュメッセージ
+		attribute.addFlashAttribute("message", "新しいToDoが作成されました。");
+		// PRGパターン
+		return "redirect:/todos";
+	}
 	
+	/**
+	 * 指定された「id」の修正画面を表示します。
+	 * @param id
+	 * @param model
+	 * @param attribute
+	 * @return
+	 */
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable Integer id, Model model, RedirectAttributes attribute) {
+		// idに対応する「すること」を取得
+		ToDo target = toDoService.findByIdToDo(id);
+		if(target != null) {
+			// 対象データがある場合はFormへの変換
+			ToDoForm form = ToDoHelper.convertToDoFrom(target);
+			// モデルに格納
+			model.addAttribute("toDoForm", form);
+			
+			return "todo/form";
+			
+		} else {
+			// 対象データがない場合はフラッシュメッセージを設定
+			attribute.addFlashAttribute("errorMessage", "対象データがありません。");
+			// 一覧画面へリダイレクト
+			return "redirect:/todos";
+		}
+	}
 	
+	public String update(ToDoForm form, RedirectAttributes attribute) {
+		// エンティティへ変更
+		ToDo todo = ToDoHelper.convertToDo(form);
+		// 更新処理
+		toDoService.updateToDo(todo);
+		// 対象データがない場合はフラッシュメッセージを設定
+		attribute.addFlashAttribute("message", "ToDoが更新されました。");
+		// PRGパターン
+		return "redirect:/todos";
+	}
 }
